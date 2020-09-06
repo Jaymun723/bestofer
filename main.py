@@ -29,6 +29,12 @@ def getAccessToken():
             "client_secret": CLIENT_SECRET,
             "grant_type": "client_credentials"
         })
+
+    if not res.ok:
+        print("Error ({}) in 'getAccessToken()':\n{}".format(
+            res.status_code, res.text))
+        exit(1)
+
     data = res.json()
     return data["access_token"]
 
